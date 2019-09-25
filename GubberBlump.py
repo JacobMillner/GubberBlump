@@ -8,7 +8,7 @@ screenshot = ImageGrab.grab()
 screenshot.save("sreengrab.jpg")
 img = cv.imread("sreengrab.jpg",0)
 img2 = img.copy()
-template = cv.imread('test_bobber.jpg',0)
+template = cv.imread('test_fishing.jpg',0)
 w, h = template.shape[::-1]
 
 img = img2.copy()
