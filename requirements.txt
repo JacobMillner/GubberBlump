@@ -1,7 +1,0 @@
-opencv-python
-numpy
-matplotlib
-Pillow
-PyUserInput
-keyboard
-PyAutoGUI

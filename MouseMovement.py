@@ -103,7 +103,7 @@ if __name__ == '__main__':
     coordsAndDelay += mouseCalc.calcCoordsAndDelay(center, bottomLeft)
     coordsAndDelay += mouseCalc.calcCoordsAndDelay(bottomLeft, center)
 
-    mouse.move(round(center[0]), round(center[1]));
+    mouse.move(round(center[0]), round(center[1]))
 
     for x, y, delay in coordsAndDelay:
         mouse.move(round(x), round(y))
