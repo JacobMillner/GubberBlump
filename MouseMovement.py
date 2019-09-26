@@ -1,3 +1,7 @@
+# A python 3 version of SRL-6's _humanWindMouse from /lib/core/mouse.simba with modifications.
+# Written by GitHub user Bahm
+# https://gist.github.com/Bahm/8408ebf5d6aa83d3de8bb09655236888
+
 import math
 from pymouse import PyMouse
 from random import randint
