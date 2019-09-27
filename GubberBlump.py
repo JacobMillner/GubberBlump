@@ -5,7 +5,9 @@ from PIL import ImageGrab
 import time
 import keyboard
 import pyautogui
+from pymouse import PyMouse
 import random
+from MouseMovement import MouseMovementCalculator
 
 while True:
     if keyboard.is_pressed('q'):
@@ -30,19 +32,22 @@ while True:
         method = eval('cv.TM_CCOEFF_NORMED')
         # Apply template Matching
         res = cv.matchTemplate(img,template,method)
+        # debugging
+        #threshhold = 0.70
+        #loc = np.where( res >= threshhold)
+        #print("loc thresh: " + str(loc))
         min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
+        cur_pos = pyautogui.position()
+        bobber_pos = ((max_loc[0]+x_margin), (max_loc[1]+y_margin))
+        mouse = PyMouse()
+        mouseSpeed = 30
+        mouseCalc = MouseMovementCalculator(7, 5, mouseSpeed, 10*mouseSpeed)
+        coordsAndDelay = mouseCalc.calcCoordsAndDelay(cur_pos, bobber_pos)
+        for x, y, delay in coordsAndDelay:
+            mouse.move(round(x), round(y))
+            time.sleep(delay/1000)
+        print("Current Mouse Position: " + str(cur_pos))
         print("min val: " + str(min_val))
         print("max val: " + str(max_val))
         print("min loc: " + str(min_loc))
         print("max loc: " + str(max_loc))
-
-        top_left = max_loc
-        pyautogui.moveTo((top_left[0]+x_margin), (top_left[1]+y_margin), duration = 1)
-        bottom_right = (top_left[0] + w, top_left[1] + h)
-        cv.rectangle(img,top_left, bottom_right, 255, 2)
-        plt.subplot(121),plt.imshow(res,cmap = 'gray')
-        plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-        plt.subplot(122),plt.imshow(img,cmap = 'gray')
-        plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-        plt.suptitle('cv.TM_CCOEFF_NORMED')
-        #plt.show()
