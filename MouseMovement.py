@@ -80,31 +80,3 @@ class MouseMovementCalculator:
             veloY = (veloY / veloMag) * randomDist
 
         return (veloX, veloY)
-
-
-if __name__ == '__main__':
-    mouse = PyMouse()
-    width, height = mouse.screen_size()
-
-    mouseSpeed = 30
-    center = (width/2, height/2)
-    topLeft = (0, 0)
-    topRight = (width, 0)
-    bottomLeft = (0, height)
-    bottomRight = (width, height)
-
-    mouseCalc = MouseMovementCalculator(7, 5, mouseSpeed, 10*mouseSpeed)
-    coordsAndDelay = mouseCalc.calcCoordsAndDelay(center, topLeft)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(topLeft, center)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(center, topRight)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(topRight, center)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(center, bottomRight)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(bottomRight, center)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(center, bottomLeft)
-    coordsAndDelay += mouseCalc.calcCoordsAndDelay(bottomLeft, center)
-
-    mouse.move(round(center[0]), round(center[1]))
-
-    for x, y, delay in coordsAndDelay:
-        mouse.move(round(x), round(y))
-        sleep(delay/1000)
