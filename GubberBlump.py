@@ -5,7 +5,7 @@ from PIL import ImageGrab
 import random
 import cv2 as cv
 
-threshhold = 0.65
+threshold = 0.65
 fish_key = '1'
 
 while True:
@@ -30,30 +30,34 @@ while True:
         # TODO: break this out into json file and load/loop over the templates and thresholds
 
         # dark water
-        template = cv.imread('Templates/test_bobber.jpg',0)
-        bobber_found = seeker.FindBobber(img2, template, threshhold)
-        if seeking_bobber and bobber_found:
-            print("We got it!")
-            seeking_bobber = False
+        if seeking_bobber:
+            template = cv.imread('Templates/test_bobber.jpg',0)
+            bobber_found = seeker.FindBobber(img2, template, threshold)
+            if bobber_found:
+                print("We got it!")
+                seeking_bobber = False
         
         # blue water
-        template = cv.imread('Templates/bobber2.jpg',0)
-        bobber_found = seeker.FindBobber(img2, template, 0.50)
-        if seeking_bobber and bobber_found:
-            print("We got it!")
-            seeking_bobber = False
+        if seeking_bobber:
+            template = cv.imread('Templates/bobber2.jpg',0)
+            bobber_found = seeker.FindBobber(img2, template, 0.50)
+            if bobber_found:
+                print("We got it!")
+                seeking_bobber = False
         
         # above with fish
-        template = cv.imread('Templates/bobber_above.jpg',0)
-        bobber_found = seeker.FindBobber(img2, template, threshhold)
-        if seeking_bobber and bobber_found:
-            print("We got it!")
-            seeking_bobber = False
+        if seeking_bobber:
+            template = cv.imread('Templates/bobber_above.jpg',0)
+            bobber_found = seeker.FindBobber(img2, template, threshold)
+            if bobber_found:
+                print("We got it!")
+                seeking_bobber = False
 
         # above with fish
-        template = cv.imread('Templates/bobber_above_fish.jpg',0)
-        bobber_found = seeker.FindBobber(img2, template, threshhold)
-        if seeking_bobber and bobber_found:
-            print("We got it!")
-            seeking_bobber = False
+        if seeking_bobber:
+            template = cv.imread('Templates/bobber_above_fish.jpg',0)
+            bobber_found = seeker.FindBobber(img2, template, threshold)
+            if bobber_found:
+                print("We got it!")
+                seeking_bobber = False
         

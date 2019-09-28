@@ -9,7 +9,7 @@ import random
 from MouseMovement import MouseMovementCalculator
 
 class BobberSeeker:
-    def FindBobber(self, img2, template, threshhold):
+    def FindBobber(self, img2, template, threshold):
         print(":: Finding Bobber ::")
 
         x_margin = random.randint(10,40)
@@ -22,9 +22,9 @@ class BobberSeeker:
         # Apply template Matching
         res = cv.matchTemplate(img,template,method)
 
-        # a threshhold to prevent false detection
+        # a threshold to prevent false detection
         
-        loc = np.where( res >= threshhold)
+        loc = np.where( res >= threshold)
         if len(loc[0]) != 0:
             min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
             cur_pos = pyautogui.position()
@@ -36,7 +36,7 @@ class BobberSeeker:
 
             # set up some random crap to make mousemovement more variable
             extra_movement = random.randint(0,100)
-            if extra_movement >= 75: # we accidently missed
+            if extra_movement >= 75: # we accidentally missed
                 print("and I oop...")
                 x_oops = random.randint(200,400)
                 y_oops = random.randint(200,400)
@@ -53,11 +53,6 @@ class BobberSeeker:
             for x, y, delay in coordsAndDelay:
                 mouse.move(round(x), round(y))
                 sleep(delay/1000)
-            print("Current Mouse Position: " + str(cur_pos))
-            print("min val: " + str(min_val))
-            print("max val: " + str(max_val))
-            print("min loc: " + str(min_loc))
-            print("max loc: " + str(max_loc))
             return True
         else:
             # we failed to detect the object

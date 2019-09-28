@@ -1,0 +1,11 @@
+{
+    "templates" : 
+    {
+        "template 1" :
+        {
+            "name" : "foo",
+            "file" : "test_bobber.jpg",
+            "threshold" : "0.65"
+        }
+    }
+}
