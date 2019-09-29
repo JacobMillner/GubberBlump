@@ -1,10 +1,31 @@
 {
     "templates" : 
     {
-        "template 1" :
+        "Temp1" :
         {
-            "name" : "foo",
-            "file" : "test_bobber.jpg",
+            "name" : "Brown Water",
+            "file" : "brown_water.jpg",
+            "threshold" : "0.65"
+        },
+
+        "Temp2" :
+        {
+            "name" : "Blue Water",
+            "file" : "blue_water.jpg",
+            "threshold" : "0.65"
+        },
+
+        "Temp3" :
+        {
+            "name" : "Blue Water Above",
+            "file" : "blue_above.jpg",
+            "threshold" : "0.65"
+        },
+
+        "Temp4" :
+        {
+            "name" : "Blue Water Above w/ Fish",
+            "file" : "bobber_above_fish.jpg",
             "threshold" : "0.65"
         }
     }

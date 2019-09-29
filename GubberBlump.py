@@ -3,10 +3,16 @@ from time import sleep
 from BobberSeeker import BobberSeeker
 from PIL import ImageGrab
 import random
+import json
 import cv2 as cv
 
 threshold = 0.65
 fish_key = '1'
+
+# load our templates from the json file
+templateData = {}
+with open('TemplateConfig.json') as json_file:
+    templateData = json.load(json_file)
 
 while True:
     if keyboard.is_pressed('ctrl+q'):
