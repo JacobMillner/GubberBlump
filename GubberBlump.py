@@ -35,23 +35,26 @@ while True:
         
         # TODO: break this out into json file and load/loop over the templates and thresholds
 
-        # dark water
+        # brown water
+        print("brown water")
         if seeking_bobber:
-            template = cv.imread('Templates/test_bobber.jpg',0)
+            template = cv.imread('Templates/brown_water.jpg',0)
             bobber_found = seeker.FindBobber(img2, template, threshold)
             if bobber_found:
                 print("We got it!")
                 seeking_bobber = False
-        
+
+        print("blue water")
         # blue water
         if seeking_bobber:
-            template = cv.imread('Templates/bobber2.jpg',0)
+            template = cv.imread('Templates/blue_water.jpg',0)
             bobber_found = seeker.FindBobber(img2, template, 0.50)
             if bobber_found:
                 print("We got it!")
                 seeking_bobber = False
-        
-        # above with fish
+
+        print("above")
+        # above
         if seeking_bobber:
             template = cv.imread('Templates/bobber_above.jpg',0)
             bobber_found = seeker.FindBobber(img2, template, threshold)
@@ -60,6 +63,7 @@ while True:
                 seeking_bobber = False
 
         # above with fish
+        print("above with fish")
         if seeking_bobber:
             template = cv.imread('Templates/bobber_above_fish.jpg',0)
             bobber_found = seeker.FindBobber(img2, template, threshold)

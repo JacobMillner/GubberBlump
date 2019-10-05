@@ -23,7 +23,6 @@ class BobberSeeker:
         res = cv.matchTemplate(img,template,method)
 
         # a threshold to prevent false detection
-        
         loc = np.where( res >= threshold)
         if len(loc[0]) != 0:
             min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
