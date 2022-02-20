@@ -1,8 +1,12 @@
 # GubberBlump
 
+Find your fishing bobber with OpenCV!
+
 Install:
-run pip install -r .\requirements.txt
+
+`pipenv install`
 
 
 Run:
-python GubberBlump.py
+
+`pipenv run python GubberBlump.py`

@@ -2,7 +2,6 @@ import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 from time import sleep
-import keyboard
 import pyautogui
 from pymouse import PyMouse
 import random
