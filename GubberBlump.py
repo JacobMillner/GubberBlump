@@ -23,7 +23,7 @@ while True:
     sleep(sleep_time)
 
     # take a screenshot
-    screenshot = ImageGrab.grab()
+    screenshot = ImageGrab.grab(bbox=(0,0,1920,1080))
     screenshot.save("sreengrab.jpg")
     img = cv.imread("sreengrab.jpg",0)
     img2 = img.copy()
