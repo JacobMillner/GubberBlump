@@ -34,8 +34,6 @@ while True:
     print("brown water")
     if seeking_bobber:
         template = cv.imread('Templates/brown_water.JPG', 0)
-        print('template: ')
-        print(template)
         bobber_found = seeker.FindBobber(img2, template, threshold)
         if bobber_found:
             print("We got it!")
